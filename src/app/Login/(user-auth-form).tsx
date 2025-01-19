@@ -11,7 +11,7 @@ export function UserAuthForm() {
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
-    await signIn("google", { callbackUrl: "/dashboard" });
+    await signIn("google", { callbackUrl: "/newdash" });
     setIsLoading(false);
   };
 

@@ -6,31 +6,19 @@ import { Input } from "./ui/input";
 import Image from "next/image";
 import { Card, CardContent, CardHeader } from "./ui/card";
 import { Check } from "lucide-react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Hero() {
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const router=useRouter();
 
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
 
     setIsLoading(true);
-    try {
-      const response = await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ prompt }),
-      });
-
-      const data = await response.json();
-      console.log("Generated response:", data);
-    } catch (error) {
-      console.error("Generation failed:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    router.push("/Login")
   };
 
   return (
@@ -56,20 +44,21 @@ export default function Hero() {
               In this new gen of AI, ReactGen is here to help you build React apps faster than ever.
             </p>
           </div>
-
-          <Button size="lg" className="bg-[#7C3AED] hover:bg-[#7C3AED]/90">
+          <Link href="/Login">
+          <Button  size="lg" className="bg-[#7C3AED] hover:bg-[#7C3AED]/90">
             Get Started Free
           </Button>
+          </Link>
         </div>
 
         <section className="relative overflow-hidden rounded-3xl bg-[#7C3AED] mt-16 w-full max-w-4xl">
           <div className="px-8 py-16">
             <div className="space-y-4 text-center">
               <h2 className="text-4xl font-light tracking-tight text-white">
-                Generate your first app today
+                Generate your first component today
               </h2>
               <p className="text-xl text-black">
-                Turn your ideas into a <span className="text-black">functional React app</span>
+                Turn your ideas into a <span className="text-black">functional React components</span>
               </p>
             </div>
 
@@ -100,7 +89,7 @@ export default function Hero() {
             <div className="w-full md:w-4/5 relative">
               <div className="absolute inset-0 bg-gradient-to-b from-[#262243] to-transparent h-1/3 pointer-events-none" />
               <Image
-                src="https://www.tempolabs.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdevelop-section-image.0debbbc7.webp&w=3840&q=75"
+                src="/dash.png"
                 alt="stats dash image"
                 width={1200}
                 height={800}

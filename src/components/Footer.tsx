@@ -12,10 +12,10 @@ import {
   } from "@/components/ui/accordion";
 
 const socialLinks = [
-  { name: "GitHub", icon: FaGithub, url: "https://github.com/YATHARTH-Sriv/viewbooster", class:" rounded-md p-2 m-2 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12  hover:bg-black" },
-  { name: "LinkedIn", icon: FaLinkedin, url: "https://www.linkedin.com/in/yatharth-srivastava-0b0382261/" , class:" rounded-md p-2 m-2 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-blue hover:bg-black" },
-  { name: "Instagram", icon: FaInstagram, url: "https://www.instagram.com/yatharth_sriv/" , class:" rounded-md p-2 m-2 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-purple hover:bg-black" },
-  { name: "Twitter", icon: FaTwitter, url: "https://twitter.com/yatharth_sriv", class:" rounded-md p-2 m-2 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-blue hover:bg-black" },
+  { name: "GitHub", icon: FaGithub, url: "https://github.com/YATHARTH-Sriv/reactgen", class:" rounded-md p-2 m-2 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12  hover:bg-white hover:text-black" },
+  { name: "LinkedIn", icon: FaLinkedin, url: "https://www.linkedin.com/in/yatharth-srivastava-0b0382261/" , class:" rounded-md p-2 m-2 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 hover:bg-white hover:text-black" },
+  { name: "Instagram", icon: FaInstagram, url: "https://www.instagram.com/yatharth_sriv/" , class:" rounded-md p-2 m-2 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 hover:bg-white hover:text-black" },
+  { name: "Twitter", icon: FaTwitter, url: "https://twitter.com/yatharth_sriv", class:" rounded-md p-2 m-2 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 hover:bg-white hover:text-black" },
 ];
 
 
@@ -28,7 +28,7 @@ const faqs = [
     {
       question: "How can it help?",
       answer:
-        " It can help you to get more views and subscribers",
+        " It can help you to create different react components",
     },
     {
       question: "Do you provide ongoing support?",

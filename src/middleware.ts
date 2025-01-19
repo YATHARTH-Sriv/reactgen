@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const config = { matcher: ["/dashboard", "/Login", "/sign-up", "/verify"] };
+export const config = { matcher: ["/newdash", "/Login"] };
 
 export async function middleware(request: NextRequest) {
   const token =
@@ -15,15 +15,14 @@ export async function middleware(request: NextRequest) {
     token &&
     (pathname.startsWith("/Login") ||
       pathname.startsWith("/sign-up") ||
-      pathname.startsWith("/verify") ||
       pathname === "/")
   ) {
-    url.pathname = "/dashboard";
+    url.pathname = "/newdash";
     return NextResponse.redirect(url);
   }
 
   // Redirect unauthenticated users trying to access protected routes
-  if (!token && pathname.startsWith("/dashboard")) {
+  if (!token && pathname.startsWith("/newdash")) {
     url.pathname = "/Login";
     return NextResponse.redirect(url);
   }
