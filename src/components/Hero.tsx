@@ -12,19 +12,18 @@ import Link from "next/link";
 export default function Hero() {
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const router=useRouter();
+  const router = useRouter();
 
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
-
     setIsLoading(true);
-    router.push("/Login")
+    router.push("/Login");
   };
 
   return (
     <>
-      <section className="pt-32 pb-20 min-h-screen flex flex-col bg-gradient-to-b from-[#16171c] to-[#262243] items-center justify-center">
-        <div className="container flex flex-col items-center text-center space-y-8">
+      <section className="pt-32 pb-20 min-h-screen flex flex-col bg-gradient-to-b from-[#16171c] to-[#262243] items-center justify-center px-4 sm:px-8">
+        <div className="container mx-auto flex flex-col items-center text-center space-y-8">
           <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm backdrop-blur-sm">
             <span className="mr-2 flex gap-2 text-white">
               Built with <FaHeart className="text-lg text-red-500" />
@@ -34,30 +33,31 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative max-w-4xl space-y-4">
-            <h1 className="text-4xl text-white gap-y-2 font-light tracking-tight sm:text-6xl">
+          <div className="relative max-w-4xl space-y-4 mx-auto px-2">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl text-white gap-y-2 font-light tracking-tight">
               Build React Apps 10x
               <br />
               Faster with AI
             </h1>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base sm:text-xl text-muted-foreground">
               In this new gen of AI, ReactGen is here to help you build React apps faster than ever.
             </p>
           </div>
+
           <Link href="/Login">
-          <Button  size="lg" className="bg-[#7C3AED] hover:bg-[#7C3AED]/90">
-            Get Started Free
-          </Button>
+            <Button size="lg" className="w-full sm:w-auto bg-[#7C3AED] hover:bg-[#7C3AED]/90">
+              Get Started Free
+            </Button>
           </Link>
         </div>
 
-        <section className="relative overflow-hidden rounded-3xl bg-[#7C3AED] mt-16 w-full max-w-4xl">
-          <div className="px-8 py-16">
+        <section className="relative overflow-hidden rounded-3xl bg-[#7C3AED] mt-16 w-full max-w-4xl mx-auto px-4 sm:px-8">
+          <div className="py-16">
             <div className="space-y-4 text-center">
-              <h2 className="text-4xl font-light tracking-tight text-white">
+              <h2 className="text-2xl sm:text-4xl font-light tracking-tight text-white">
                 Generate your first component today
               </h2>
-              <p className="text-xl text-black">
+              <p className="text-base sm:text-xl text-black">
                 Turn your ideas into a <span className="text-black">functional React components</span>
               </p>
             </div>
@@ -67,12 +67,12 @@ export default function Hero() {
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder="A weather widget with animated icons"
-                className="text-black w-80 relative"
+                className="text-black w-full sm:w-80 relative"
               />
               <Button
                 onClick={handleGenerate}
                 disabled={isLoading || !prompt.trim()}
-                className="bg-black h-10 w-fit text-white hover:text-black hover:bg-white"
+                className="bg-black h-10 w-full sm:w-auto text-white hover:text-black hover:bg-white"
               >
                 {isLoading ? "Generating..." : "Generate"}
               </Button>
@@ -81,10 +81,9 @@ export default function Hero() {
         </section>
       </section>
 
-      {/* New gradient transition section */}
       <div className="relative bg-gradient-to-b from-[#262243] to-black">
         <div className="absolute inset-0 bg-gradient-to-b from-[#262243] via-[#262243] to-black" />
-        <div className="container relative z-10 px-4">
+        <div className="container relative z-10 px-4 sm:px-8 mx-auto">
           <div className="w-full flex justify-center pt-20">
             <div className="w-full md:w-4/5 relative">
               <div className="absolute inset-0 bg-gradient-to-b from-[#262243] to-transparent h-1/3 pointer-events-none" />
@@ -103,17 +102,15 @@ export default function Hero() {
   );
 }
 
-
-const PricingSection = () => {
+export const PricingSection = () => {
   return (
-    <section className="py-16 bg-[#1C1C1F]">
-      <div className="container px-4 md:px-6">
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-16">
+    <section className="py-16 bg-[#1C1C1F] px-4 sm:px-8">
+      <div className="container mx-auto">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-16">
           Plans & Pricing
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Free Tier */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card className="bg-[#27262b] border-0 text-white hover:bg-[#2F2E33] transition-colors">
             <CardHeader className="pb-8">
               <div className="px-2">
@@ -151,7 +148,6 @@ const PricingSection = () => {
             </CardContent>
           </Card>
 
-          {/* Pro Tier */}
           <Card className="bg-[#27262b] border-0 text-white hover:bg-[#2F2E33] transition-colors">
             <CardHeader className="pb-8">
               <div className="px-2">
@@ -183,7 +179,6 @@ const PricingSection = () => {
             </CardContent>
           </Card>
 
-          {/* Agent+ Tier */}
           <Card className="bg-[#27262b] border-0 text-white hover:bg-[#2F2E33] transition-colors">
             <CardHeader className="pb-8">
               <div className="px-2">
@@ -232,4 +227,4 @@ const PricingSection = () => {
       </div>
     </section>
   );
-}
+};
