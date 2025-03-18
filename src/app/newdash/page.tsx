@@ -203,6 +203,7 @@ interface CodeResponse {
 }
 
 
+
 const CodeDisplay = ({ code, dependencies }: CodeResponse) => {
   const [copied, setCopied] = useState(false)
   
@@ -231,15 +232,15 @@ const CodeDisplay = ({ code, dependencies }: CodeResponse) => {
     }, {});
 
   return (
-    <Card className="w-full">
+    <Card className="w-full bg-zinc-900 border-zinc-800 text-zinc-100">
       <CardHeader>
         <div className="flex justify-between items-center">
-          <CardTitle>Generated Components</CardTitle>
+          <CardTitle className="text-zinc-100">Generated Components</CardTitle>
           <Button 
             variant="outline" 
             size="sm"
             onClick={copyToClipboard}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 border-zinc-700 bg-zinc-800 text-zinc-100 hover:bg-zinc-700"
           >
             {copied ? (
               <>
@@ -258,35 +259,35 @@ const CodeDisplay = ({ code, dependencies }: CodeResponse) => {
       <CardContent>
         {Object.keys(files).length > 1 ? (
           <Tabs defaultValue={Object.keys(files)[0]} className="w-full">
-            <TabsList className="w-full">
+            <TabsList className="w-full bg-zinc-800">
               {Object.keys(files).map((filename) => (
-                <TabsTrigger key={filename} value={filename} className="flex-1">
+                <TabsTrigger key={filename} value={filename} className="flex-1 text-zinc-300 data-[state=active]:bg-zinc-700 data-[state=active]:text-zinc-100">
                   {filename}
                 </TabsTrigger>
               ))}
             </TabsList>
             {Object.entries(files).map(([filename, content]) => (
               <TabsContent key={filename} value={filename}>
-                <div className="relative rounded-lg border bg-muted/50 backdrop-blur">
-                  <div className="flex justify-between items-center px-4 py-2 border-b">
-                    <span className="text-sm font-medium">{filename}</span>
+                <div className="relative rounded-lg border border-zinc-800 bg-zinc-900 backdrop-blur">
+                  <div className="flex justify-between items-center px-4 py-2 border-b border-zinc-800">
+                    <span className="text-sm font-medium text-zinc-300">{filename}</span>
                   </div>
                   <pre className="p-4 overflow-x-auto">
-                    <code className="text-sm text-foreground">{content}</code>
+                    <code className="text-sm text-zinc-300">{content}</code>
                   </pre>
                 </div>
               </TabsContent>
             ))}
           </Tabs>
         ) : (
-          <div className="relative rounded-lg border bg-muted/50 backdrop-blur">
-            <div className="flex justify-between items-center px-4 py-2 border-b">
-              <span className="text-sm font-medium">
+          <div className="relative rounded-lg border border-zinc-800 bg-zinc-900 backdrop-blur">
+            <div className="flex justify-between items-center px-4 py-2 border-b border-zinc-800">
+              <span className="text-sm font-medium text-zinc-300">
                 {Object.keys(files)[0] || 'Component.jsx'}
               </span>
             </div>
             <pre className="p-4 overflow-x-auto">
-              <code className="text-sm text-foreground">
+              <code className="text-sm text-zinc-300">
                 {Object.values(files)[0] || code}
               </code>
             </pre>
@@ -295,12 +296,12 @@ const CodeDisplay = ({ code, dependencies }: CodeResponse) => {
 
         {dependencies.length > 0 && (
           <div className="mt-6 space-y-2">
-            <h4 className="font-semibold">Required Dependencies:</h4>
+            <h4 className="font-semibold text-zinc-100">Required Dependencies:</h4>
             <ul className="space-y-1">
               {dependencies.map((dep) => (
                 <li 
                   key={dep} 
-                  className="text-sm text-muted-foreground bg-muted/50 px-3 py-1 rounded-md"
+                  className="text-sm text-zinc-300 bg-zinc-800 px-3 py-1 rounded-md"
                 >
                   {dep}
                 </li>
@@ -320,27 +321,27 @@ const TemplateCard = ({ template }: { template: Template }) => {
   return (
     <>
       <Card 
-        className="cursor-pointer hover:shadow-lg transition-shadow"
+        className="cursor-pointer hover:shadow-lg transition-shadow bg-zinc-900 border-zinc-800 text-zinc-100"
         onClick={() => setIsOpen(true)}
       >
         <CardHeader>
           <div className="flex items-center gap-2">
             <span className="text-2xl">{template.icon}</span>
-            <CardTitle>{template.title}</CardTitle>
+            <CardTitle className="text-zinc-100">{template.title}</CardTitle>
           </div>
-          <CardDescription>{template.description}</CardDescription>
+          <CardDescription className="text-zinc-400">{template.description}</CardDescription>
         </CardHeader>
       </Card>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] flex flex-col">
+        <DialogContent className="max-w-4xl max-h-[90vh] flex flex-col bg-zinc-900 border-zinc-800 text-zinc-100">
           <DialogHeader>
-            <DialogTitle>{template.title}</DialogTitle>
-            <DialogDescription>{template.description}</DialogDescription>
+            <DialogTitle className="text-zinc-100">{template.title}</DialogTitle>
+            <DialogDescription className="text-zinc-400">{template.description}</DialogDescription>
           </DialogHeader>
           
           <div className="grid gap-4 py-4 flex-1 min-h-0">
-            <div className="rounded-lg overflow-hidden">
+            <div className="rounded-lg overflow-hidden border border-zinc-800">
               <img
                 src={template.previewUrl}
                 alt={`Preview of ${template.title}`}
@@ -348,8 +349,8 @@ const TemplateCard = ({ template }: { template: Template }) => {
               />
             </div>
             
-            <div className="bg-muted rounded-lg flex-1 min-h-0 flex flex-col">
-              <pre className="text-sm p-4 overflow-y-auto max-h-[400px] flex-1">
+            <div className="bg-zinc-800 rounded-lg flex-1 min-h-0 flex flex-col">
+              <pre className="text-sm p-4 overflow-y-auto max-h-[400px] flex-1 text-zinc-300">
                 <code>{template.code}</code>
               </pre>
             </div>
@@ -359,6 +360,7 @@ const TemplateCard = ({ template }: { template: Template }) => {
     </>
   )
 }
+
 
 export default function Dashboard() {
   const [input, setInput] = useState('')
@@ -393,12 +395,12 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-background text-foreground">
+    <div className="flex flex-col h-screen bg-black text-zinc-100">
       <main className="flex-1 overflow-auto p-4">
         {!generatedCode ? (
           <>
             <div className="flex flex-col items-center justify-center h-64 space-y-6">
-              <h1 className="bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-4xl font-bold tracking-tight text-transparent text-center">
+              <h1 className="bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent text-center">
                 What component can I help you create?
               </h1>
               <div className="flex flex-wrap justify-center gap-2">
@@ -407,7 +409,7 @@ export default function Dashboard() {
                     key={suggestion} 
                     variant="outline" 
                     size="sm"
-                    className="border-border bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+                    className="border-zinc-700 bg-zinc-800/50 text-zinc-300 hover:bg-zinc-700 hover:text-zinc-100"
                     onClick={() => setInput(suggestion)}
                   >
                     {suggestion}
@@ -419,7 +421,7 @@ export default function Dashboard() {
             <div className="mx-auto w-full max-w-5xl space-y-12 mt-12">
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-semibold tracking-tight">Component Templates</h2>
+                  <h2 className="text-2xl font-semibold tracking-tight text-zinc-100">Component Templates</h2>
                 </div>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {componentTemplates.map((template) => (
@@ -436,30 +438,26 @@ export default function Dashboard() {
         )}
       </main>
 
-      <div className="border-t border-border bg-background/80 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="border-t border-zinc-800 bg-zinc-900/80 p-4 backdrop-blur supports-[backdrop-filter]:bg-zinc-900/60">
         <form onSubmit={handleSubmit} className="mx-auto flex max-w-2xl flex-col gap-2">
           <Textarea 
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Describe the component you want to create... Add as much detail as you can! Like Margins and Paddings, Colors, etc."
-            className="min-h-[100px] bg-card/50"
+            className="min-h-[100px] bg-zinc-800 text-zinc-100 border-zinc-700 placeholder:text-zinc-500"
           />
           <div className="flex justify-end gap-2">
-            {/* <Button 
-              type="button"
-              size="icon"
-              variant="ghost" 
+            <Button 
+              type="submit" 
+              disabled={isLoading}
+              className="bg-purple-600 hover:bg-purple-700 text-white"
             >
-              <Paperclip className="h-4 w-4" />
-            </Button> */}
-            <Button type="submit" disabled={isLoading}>
               <ArrowUp className="mr-2 h-4 w-4" />
               {isLoading ? 'Generating...' : 'Generate Component'}
             </Button>
           </div>
         </form>
       </div>
-      
     </div>
   )
 }
