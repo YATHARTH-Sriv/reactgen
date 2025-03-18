@@ -17,7 +17,7 @@ export default function Hero() {
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
     setIsLoading(true);
-    router.push("/Login");
+    router.push("/newdash");
   };
 
   return (
@@ -44,7 +44,7 @@ export default function Hero() {
             </p>
           </div>
 
-          <Link href="/Login">
+          <Link href="/newdash">
             <Button size="lg" className="w-full sm:w-auto bg-[#7C3AED] hover:bg-[#7C3AED]/90">
               Get Started Free
             </Button>

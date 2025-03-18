@@ -56,10 +56,10 @@ export default function Navbar() {
 
         {/* Auth */}
         <div className="hidden md:flex items-center gap-4">
-          <Link href="/Login">
+          {/* <Link href="/newdash">
             <Button variant="secondary" className="text-black">Login</Button>
-          </Link>
-          <Link href="/Login">
+          </Link> */}
+          <Link href="/newdash">
             <Button className="bg-[#7C3AED] hover:bg-[#7C3AED]/90">Get Started</Button>
           </Link>
         </div>
@@ -78,10 +78,10 @@ export default function Navbar() {
             <NavLink href="#">Agent+</NavLink>
           </div>
           <div className="flex flex-col gap-2 mt-4">
-            <Link href="/Login">
+            {/* <Link href="/newdash">
               <Button variant="secondary" className="text-black w-full">Login</Button>
-            </Link>
-            <Link href="/Login">
+            </Link> */}
+            <Link href="/newdash">
               <Button className="bg-[#7C3AED] hover:bg-[#7C3AED]/90 w-full">Get Started</Button>
             </Link>
           </div>
